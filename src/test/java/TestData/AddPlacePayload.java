@@ -7,7 +7,7 @@ import pojo.AddPlace;
 import pojo.Location;
 
 public class AddPlacePayload {
-	public AddPlace addPlacepayload()
+	public AddPlace addPlacepayload(String name,String language,String address)
 	{
 		AddPlace a=new AddPlace();
 		Location location=new Location();
@@ -15,15 +15,15 @@ public class AddPlacePayload {
 		location.setLng(33.429362);
 		a.setLocation(location);
 		a.setAccuracy(80);
-		a.setName("Milan Sutar2");
+		a.setName(name);
 		a.setPhone_number("(+91) 987 896 3237");
-		a.setAddress("29, side layout, cohen 10");
+		a.setAddress(address);
 		List<String> myList=new ArrayList<String>();
 		myList.add("Tecuh");
 		myList.add("Parkty");
 		a.setTypes(myList);
 		a.setWebsite("https://milansutar123.com");
-		a.setLanguage("OdiSha-IN");
+		a.setLanguage(language);
 		return a;
 	}
 

@@ -3,7 +3,7 @@ package stepDefinations;
 import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertEquals;
 
-
+import java.io.IOException;
 
 import TestData.AddPlacePayload;
 import TestData.Utils;
@@ -21,13 +21,13 @@ public class StepDefinations extends Utils {
 	RequestSpecification res;
 	ResponseSpecification resspec;
 	Response response;
-	@Given("Add place payload")
-	public void add_place_payload() {
+	@Given("Add place payload with {string} {string} {string}")
+	public void add_place_payload_with(String name, String language, String address) throws IOException{
 		AddPlacePayload p=new AddPlacePayload();
 		
 		
 		resspec=new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
-		res=given().spec(requestSpecification()).body(p.addPlacepayload()).log().all();
+		res=given().spec(requestSpecification()).body(p.addPlacepayload(name,language,address));
 	}
 	@When("User calls {string} with POST http request")
 	public void user_calls_with_post_http_request(String string) {
